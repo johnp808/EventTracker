@@ -2,12 +2,18 @@ package com.skilldistillery.walkingtracker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class WalkingTrackerApplication {
+public class WalkingTrackerApplication extends SpringBootServletInitializer {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WalkingTrackerApplication.class, args);
-	}
+	@Override
+	  protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+	    return application.sources(WalkingTrackerApplication.class);
+	  }
+	  public static void main(String[] args) {
+	    SpringApplication.run(WalkingTrackerApplication.class, args);
+	  }
 
 }
