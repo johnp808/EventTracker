@@ -15,78 +15,78 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.walkingtracker.entities.User;
-import com.skilldistillery.walkingtracker.services.UserService;
+import com.skilldistillery.walkingtracker.entities.Contestant;
+import com.skilldistillery.walkingtracker.services.ContestantService;
 
 @RestController
 @RequestMapping("api")
-public class UserController {
+public class ContestantController {
 	
 	@Autowired
-	private UserService userSvc;
+	private ContestantService contestantSvc;
 	
-	@GetMapping("users")
-	public List<User> userIndex() {
-		return userSvc.getAllUsers();
+	@GetMapping("contestants")
+	public List<Contestant> contestantIndex() {
+		return contestantSvc.getAllContestants();
 	}
 	
-	@GetMapping("users/{userId}")
-	public User showUser(
-			@PathVariable Integer userId,
+	@GetMapping("contestants/{contestantId}")
+	public Contestant showContestant(
+			@PathVariable Integer contestantId,
 			HttpServletResponse res
 	) {
-		User user = userSvc.findById(userId);
-		if (user == null) {
+		Contestant contestant = contestantSvc.findById(contestantId);
+		if (contestant == null) {
 			res.setStatus(404);
 		}
-		return user;
+		return contestant;
 	}
 
-	@PostMapping("users")
-	public User addUser(
-			@RequestBody User user,
+	@PostMapping("contestants")
+	public Contestant addContestant(
+			@RequestBody Contestant contestant,
 			HttpServletRequest req,
 			HttpServletResponse res
 	) {
 		try {
-			user = userSvc.create(user);
+			contestant = contestantSvc.create(contestant);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
-			url.append("/").append(user.getId());
+			url.append("/").append(contestant.getId());
 			res.setHeader("Location", url.toString());
 		} catch (Exception e) {
 			System.err.println(e);
 			res.setStatus(400);
-			user = null;
+			contestant = null;
 		}
-		return user;
+		return contestant;
 	}
 	
-	@PutMapping("users/{userId}")
-	public User replaceUser(
-			@PathVariable Integer userId, 
-			@RequestBody User user,
+	@PutMapping("contestants/{contestantId}")
+	public Contestant replaceContestant(
+			@PathVariable Integer contestantId, 
+			@RequestBody Contestant contestant,
 			HttpServletResponse res
 	) {
 		try {
-			user = userSvc.update(userId, user);
-			if (user == null) {
+			contestant = contestantSvc.update(contestantId, contestant);
+			if (contestant == null) {
 				res.setStatus(404);
 			}
 		} catch (Exception e) {
 			System.err.println(e);
 			res.setStatus(400);
-			user = null;
+			contestant = null;
 		}
-		return user;
+		return contestant;
 	}
-	@DeleteMapping("users/{userId}")
-	public void deleteUser(
-			@PathVariable Integer userId,
+	@DeleteMapping("contestants/{contestantId}")
+	public void deleteContestant(
+			@PathVariable Integer contestantId,
 			HttpServletResponse res
 	) {
 		try {
-			if (userSvc.deleteById(userId)) {
+			if (contestantSvc.deleteById(contestantId)) {
 				res.setStatus(204);
 			}
 			else {

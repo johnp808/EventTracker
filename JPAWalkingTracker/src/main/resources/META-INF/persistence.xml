@@ -3,7 +3,7 @@
 	<persistence-unit name="JPAWalkingTracker">
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     
-	<class>com.skilldistillery.walkingtracker.entities.User</class>
+	<class>com.skilldistillery.walkingtracker.entities.Contestant</class>
 	
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/walkingtrackerdb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />

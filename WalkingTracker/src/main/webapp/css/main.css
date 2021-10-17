@@ -1,0 +1,25 @@
+blockquote{
+color: white;
+background-color: black;
+}
+ul{
+color: white;
+background-color: black;
+}
+li{
+color: white;
+background-color: black;
+}
+h1{
+color: white;
+background-color: black;
+}
+h2{
+color: white;
+background-color: black;
+}
+body {
+  background-image: url('https://mallowrun.com/wp-content/uploads/2015/01/watl-promo-image.png');
+    background-size: cover;
+  background-repeat: no-repeat;
+}

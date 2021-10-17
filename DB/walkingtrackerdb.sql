@@ -16,20 +16,22 @@ CREATE SCHEMA IF NOT EXISTS `walkingtrackerdb` DEFAULT CHARACTER SET utf8 ;
 USE `walkingtrackerdb` ;
 
 -- -----------------------------------------------------
--- Table `user`
+-- Table `contestant`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `user` ;
+DROP TABLE IF EXISTS `contestant` ;
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE IF NOT EXISTS `contestant` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `gender` CHAR NULL,
   `age` INT NULL,
-  `user_image` VARCHAR(1000) NULL,
-  `city` VARCHAR(100) NULL,
-  `state` VARCHAR(50) NULL,
-  `walking_date` DATE NULL,
-  `minute_duration` INT NULL,
+  `contestant_image` VARCHAR(1000) NULL,
+  `representing_city` VARCHAR(100) NULL,
+  `representing_state` VARCHAR(50) NULL,
+  `event_name` VARCHAR(100) NULL,
+  `event_date` VARCHAR(50) NULL,
+  `finish_time` VARCHAR(10) NULL,
+  `place` INT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -45,16 +47,16 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `user`
+-- Data for table `contestant`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `walkingtrackerdb`;
-INSERT INTO `user` (`id`, `name`, `gender`, `age`, `user_image`, `city`, `state`, `walking_date`, `minute_duration`) VALUES (1, 'John', 'M', 29, 'https://www.themekaverse.com/images/mattey.jpg', 'Honolulu', 'Hawaii', '2021-10-6', 45);
-INSERT INTO `user` (`id`, `name`, `gender`, `age`, `user_image`, `city`, `state`, `walking_date`, `minute_duration`) VALUES (2, 'Aimi', 'F', 25, NULL, 'Honolulu', 'Hawaii', '2021-10-6', 45);
-INSERT INTO `user` (`id`, `name`, `gender`, `age`, `user_image`, `city`, `state`, `walking_date`, `minute_duration`) VALUES (3, 'Mikey', 'M', 18, NULL, 'Kahului', 'Hawaii', '2021-9-23', 15);
-INSERT INTO `user` (`id`, `name`, `gender`, `age`, `user_image`, `city`, `state`, `walking_date`, `minute_duration`) VALUES (4, 'Gene', 'M', 33, NULL, 'Fort Lauderdale', 'Florida', '2021-10-5', 25);
-INSERT INTO `user` (`id`, `name`, `gender`, `age`, `user_image`, `city`, `state`, `walking_date`, `minute_duration`) VALUES (5, 'Jin', 'M', 27, NULL, 'San Diego', 'California', '2021-9-3', 32);
-INSERT INTO `user` (`id`, `name`, `gender`, `age`, `user_image`, `city`, `state`, `walking_date`, `minute_duration`) VALUES (6, 'Stacey', 'F', 30, NULL, 'Kula', 'Hawaii', '2021-10-7', 60);
+INSERT INTO `contestant` (`id`, `name`, `gender`, `age`, `contestant_image`, `representing_city`, `representing_state`, `event_name`, `event_date`, `finish_time`, `place`) VALUES (1, 'John', 'M', 29, 'https://www.themekaverse.com/images/mattey.jpg', 'Honolulu', 'Hawaii', 'Color Run', '2021-10-06', '45:03', 5);
+INSERT INTO `contestant` (`id`, `name`, `gender`, `age`, `contestant_image`, `representing_city`, `representing_state`, `event_name`, `event_date`, `finish_time`, `place`) VALUES (2, 'Aimi', 'F', 25, NULL, 'Honolulu', 'Hawaii', 'Color Run', '2021-10-06', '45:00', 4);
+INSERT INTO `contestant` (`id`, `name`, `gender`, `age`, `contestant_image`, `representing_city`, `representing_state`, `event_name`, `event_date`, `finish_time`, `place`) VALUES (3, 'Mikey', 'M', 18, NULL, 'Kahului', 'Hawaii', 'Color Run', '2021-10-06', '50:05', 6);
+INSERT INTO `contestant` (`id`, `name`, `gender`, `age`, `contestant_image`, `representing_city`, `representing_state`, `event_name`, `event_date`, `finish_time`, `place`) VALUES (4, 'Gene', 'M', 33, NULL, 'Fort Lauderdale', 'Florida', 'Color Run', '2021-10-06', '33:20', 3);
+INSERT INTO `contestant` (`id`, `name`, `gender`, `age`, `contestant_image`, `representing_city`, `representing_state`, `event_name`, `event_date`, `finish_time`, `place`) VALUES (5, 'Jin', 'M', 27, NULL, 'San Diego', 'California', 'Color Run', '2021-10-06', '32:50', 1);
+INSERT INTO `contestant` (`id`, `name`, `gender`, `age`, `contestant_image`, `representing_city`, `representing_state`, `event_name`, `event_date`, `finish_time`, `place`) VALUES (6, 'Stacey', 'F', 30, NULL, 'Kula', 'Hawaii', 'Color Run', '2021-10-06', '33:00', 2);
 
 COMMIT;
 
