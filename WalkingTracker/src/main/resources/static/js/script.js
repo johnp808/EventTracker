@@ -18,24 +18,49 @@ function init() {
 			deleteContestant(contestantId);
 		}
 	});
+	
+document.addContestantForm.addContestant.addEventListener('click', function(event) {
+	event.preventDefault();
+	let fm = document.addContestantForm;
+	let newContestant = {
+		name: fm.name.value,
+		gender: fm.gender.value,
+		age: fm.age.value,
+		representingCity: fm.representingCity.value,
+		representingState: fm.representingState.value,
+		eventName: fm.eventName.value,
+		eventDate: fm.eventDate.value,
+		finishTime: fm.finishTime.value,
+		place: fm.place.value
+	};
+	console.log(newContestant);
+	postNewContestant(newContestant);
+});
 
-	document.addContestantForm.addContestant.addEventListener('click', function(event) {
-		event.preventDefault();
-		let fm = document.addContestantForm;
-		let newContestant = {
-			name: fm.name.value,
-			gender: fm.gender.value,
-			age: fm.age.value,
-			representingCity: fm.representingCity.value,
-			representingState: fm.representingState.value,
-			eventName: fm.eventName.value,
-			eventDate: fm.eventDate.value,
-			finishTime: fm.finishTime.value,
-			place: fm.place.value
-		};
-		console.log(newContestant);
-		postNewContestant(newContestant);
-	});
+
+function postNewContestant(newContestant) {
+	let xhr = new XMLHttpRequest();
+	xhr.open('POST', 'api/contestants');
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4) {
+			if (xhr.status === 200 || xhr.status === 201) {
+				let contestant = JSON.parse(xhr.responseText);
+				displayContestant(contestant);
+				console.log('New Runner Added')
+
+			}
+			else {
+				console.log('Did Not Create New Runner')
+				//TODO
+				// H1 That Says Runner Not Added. 
+			}
+		}
+	};
+
+	xhr.setRequestHeader('Content-type', 'application/json');
+	xhr.send(JSON.stringify(newContestant));
+}
+
 
 	document.updateForm.updateContestant.addEventListener("click", function(e) {
 		e.preventDefault();
@@ -110,13 +135,13 @@ function displayContestant(contestant) {
 	var dataDiv = document.getElementById('contestantData');
 	dataDiv.textContent = '';
 	let h1 = document.createElement('h1');
-	h1.textContent = 'Runners Name: ' + contestant.name;
+	h1.textContent = 'Contestant Name: ' + contestant.name;
 	dataDiv.appendChild(h1);
+	let bq = document.createElement('blockquote');
+	bq.textContent = 'Contestant Info: '
+	dataDiv.appendChild(bq);
 	let ul = document.createElement('ul');
 	dataDiv.appendChild(ul);
-	li = document.createElement('li');
-	li.textContent = 'Runners Info: '
-	dataDiv.appendChild(bq);
 	let li = document.createElement('li');
 	li.textContent = 'Id: ' + contestant.id;
 	ul.appendChild(li);
@@ -170,3 +195,27 @@ function deleteContestant(contestantId) {
 	document.contestantForm.reset();
 }
 
+
+
+function postNewContestant(newContestant) {
+	let xhr = new XMLHttpRequest();
+	xhr.open('POST', 'api/contestants');
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4) {
+			if (xhr.status === 200 || xhr.status === 201) {
+				let contestant = JSON.parse(xhr.responseText);
+				displayContestant(contestant);
+				console.log('New Runner Added')
+
+			}
+			else {
+				console.log('Did Not Create New Runner')
+				//TODO
+				// H1 That Says Runner Not Added. 
+			}
+		}
+	};
+
+	xhr.setRequestHeader('Content-type', 'application/json');
+	xhr.send(JSON.stringify(newContestant));
+}
