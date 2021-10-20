@@ -195,8 +195,6 @@ function deleteContestant(contestantId) {
 	document.contestantForm.reset();
 }
 
-
-
 function postNewContestant(newContestant) {
 	let xhr = new XMLHttpRequest();
 	xhr.open('POST', 'api/contestants');
