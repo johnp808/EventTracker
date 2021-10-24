@@ -1,4 +1,17 @@
 <h1>Running Tracker</h1>
 <ul>
-  <li *ngFor=" let contestant of contestants">{{contestant.name}}</li>
+  <li *ngFor=" let contestant of contestants">
+    Racers Name: {{contestant.name}}<br>
+    Gender: {{contestant.gender}}<br>
+    Age: {{contestant.age}}<br>
+    <!-- Picture: <img [style.height]="'170px'" [style.width]="'130px'" [src]=contestant.contestantImage/><br> -->
+    City: {{contestant.representingCity}}<br>
+    State: {{contestant.representingState}}<br>
+    Event Name: {{contestant.eventName}}<br>
+    Event Date: {{contestant.eventDate}}<br>
+    Placed: {{contestant.place}}<br>
+    <hr>
+    <hr>
+
+    </li>
 </ul>
