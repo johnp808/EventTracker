@@ -11,17 +11,29 @@ export class Contestant {
   finishTime: string;
   place: number;
 
-  constructor(id: number = 0,
-    name: string = '',
-    gender: string = '',
-    age: number = 0,
-    contestantImage: string = '',
-    representingCity: string = '',
-    representingState: string = '',
-    eventName: string = '',
-    eventDate: string = '',
-    finishTime: string = '',
-    place: number = 0
+  constructor(
+    // id: number = 0,
+    // name: string = '',
+    // gender: string = '',
+    // age: number = 0,
+    // contestantImage: string = '',
+    // representingCity: string = '',
+    // representingState: string = '',
+    // eventName: string = '',
+    // eventDate: string = '',
+    // finishTime: string = '',
+    // place: number = 0
+    id: number,
+    name: string,
+    gender: string,
+    age: number,
+    contestantImage: string,
+    representingCity: string,
+    representingState: string,
+    eventName: string,
+    eventDate: string,
+    finishTime: string,
+    place: number
      ) {
 
     this.id = id;

@@ -1,1 +1,26 @@
 @import "~bootstrap/dist/css/bootstrap.css";/* You can add global styles to this file, and also import other style files */
+
+h1 {
+  text-align:center;
+  text-decoration: underline darkolivegreen;
+
+}
+hr{
+  border: 10px solid orangered;
+  border-radius: 5px;
+}
+li {
+  text-align:center;
+}
+.name{
+  color: blue;
+}
+.place{
+  color: red;
+}
+.image {
+  width: 300px;
+  height: 300px;
+  border-radius: 30%;
+  border: 5px solid darkolivegreen;
+}

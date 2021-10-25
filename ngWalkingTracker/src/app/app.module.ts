@@ -11,7 +11,8 @@ import { ContestantService } from './services/contestant.service';
 @NgModule({
   declarations: [
     AppComponent,
-    ContestantListComponent
+    ContestantListComponent,
+
   ],
   imports: [
     BrowserModule,

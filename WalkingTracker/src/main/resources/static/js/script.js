@@ -151,6 +151,9 @@ function displayContestant(contestant) {
 	li = document.createElement('li');
 	li.textContent = 'Age: ' + contestant.age;
 	ul.appendChild(li);
+	let img = document.createElement("li");
+	img.src = 'Image: ' + contestant.contestantImage;
+	ul.appendChild(li); 	
 	li = document.createElement('li');
 	li.textContent = 'Representing City of: ' + contestant.representingCity;
 	ul.appendChild(li);
